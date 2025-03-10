@@ -1,7 +1,19 @@
-import { Text } from 'react-native';
+import { View } from "react-native";
+import UserFilter from "@/components/ui/UserFilter";
+import styles from "../global.styles";
+import { useCountries } from "@/hooks/useCountries";
 
-export default function TabLayout() {
+const Users = () => {
+
+  const { countries, loading: loadingCountries } = useCountries();
+
   return (
-    <Text>Initial Setup</Text>
+    <View style={styles.container}>
+      <UserFilter 
+        countries={countries}
+        loadingCountries={loadingCountries}/>
+    </View>
   );
-}
+};
+
+export default Users;
