@@ -44,6 +44,31 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: Colors.others.black100,
   },
+  listContent: {
+    paddingBottom: 60
+  },
+  userCard: {
+    marginBottom: 12,
+    borderRadius: 10,
+    backgroundColor: Colors.others.white,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+  },
+  cardShadow: {
+    overflow: "hidden",
+    shadowColor: Colors.others.black100,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+  },
 });
 
 export default styles;

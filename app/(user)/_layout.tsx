@@ -1,12 +1,12 @@
 import { View } from "react-native";
-import UserFilter from "@/components/ui/UserFilter";
-import styles from "../global.styles";
-import { useCountries } from "@/hooks/useCountries";
 import { usePaginatedUsers } from "@/hooks/usePaginatedUsers";
+import { useCountries } from "@/hooks/useCountries";
+import UserFilter from "@/components/ui/UserFilter";
+import UserList from "@/components/ui/UserList";
 import { SortOrder } from "@/constants/SortOrder";
+import styles from "../global.styles";
 
 const Users = () => {
-
   const {
     users,
     loading,
@@ -16,6 +16,7 @@ const Users = () => {
     countryFilter,
     setCountryFilter,
   } = usePaginatedUsers();
+
   const { countries, loading: loadingCountries } = useCountries();
 
   return (
@@ -28,6 +29,7 @@ const Users = () => {
         countries={countries}
         loadingCountries={loadingCountries}
       />
+      <UserList users={users} loading={loading} loadMoreUsers={loadMoreUsers} />
     </View>
   );
 };
