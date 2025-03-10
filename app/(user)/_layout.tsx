@@ -1,7 +1,13 @@
-import { Text } from 'react-native';
+import { View } from "react-native";
+import UserFilter from "@/components/ui/UserFilter";
+import styles from "../global.styles";
+const Users = () => {
 
-export default function TabLayout() {
   return (
-    <Text>Initial Setup</Text>
+    <View style={styles.container}>
+      <UserFilter/>
+    </View>
   );
-}
+};
+
+export default Users;
