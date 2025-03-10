@@ -1,14 +1,19 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import styles from "@/app/global.styles";
+import { SortOrder } from "@/constants/SortOrder";
 import { UserFilterProps } from "@/interfaces/UserFilterProps";
 
 const UserFilter: React.FC<UserFilterProps> = ({
+  countryFilter,
+  setCountryFilter,
+  order,
+  setOrder,
   countries,
-  loadingCountries
+  loadingCountries,
 }) => {
   return (
     <View style={styles.filterContainer}>
@@ -17,7 +22,7 @@ const UserFilter: React.FC<UserFilterProps> = ({
         {loadingCountries ? (
           <ActivityIndicator size="small" color={Colors.others.blue700} />
         ) : (
-          <Picker>
+          <Picker selectedValue={countryFilter} onValueChange={setCountryFilter}>
             {countries.map((country) => (
               <Picker.Item key={country.code} label={country.name} value={country.code} />
             ))}
@@ -27,11 +32,13 @@ const UserFilter: React.FC<UserFilterProps> = ({
 
       {/* Sorting Button */}
       <TouchableOpacity
-        onPress={() => {/* Sorting Logic */}}
+        onPress={() =>
+          setOrder(order === SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending)
+        }
         style={styles.sortButton}
       >
         <FontAwesome5
-          name={ "sort-amount-down"}
+          name={order === SortOrder.Ascending ? "sort-amount-up-alt" : "sort-amount-down"}
           size={14}
           color={Colors.others.black100}
         />
